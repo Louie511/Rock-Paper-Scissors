@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock paper scissors game</title>
+    <script>
+
+        // variables to keep count for game rounds, player score and computer score.
+        let gameRound = 0
+        let humanScore = 0;
+        let computerScore = 0;
+        
+        // prompt to start the game with if statements. If yes continue code else exit.
+
+        let gameStart = prompt('Ready to start the game ? \nType "yes" to begin or "no" to exit.')
+        if (gameStart.toLocaleLowerCase() == "yes"){
+
+            // For loop used to loop game 5 times.
+            for (i=0; i < 5; i++){
+                alert(`Round: ${gameRound += 1}`)
+                
+                // Function that randomly generates between 4 weapons for the computer to use.
+                function getComputerChoice(){
+                    const weapons = ["rock", "paper", "scissors", "shotgun"];
+                    const randomWeapon = weapons[Math.floor(Math.random() * weapons.length)];
+                    return randomWeapon
+                }
+
+                // Function should take 2 parameters ( player's choice and computer's choice.)
+                // Function should return string that declares winner, tie or loser.
+                function playRound(playerSelection, computerSelection){
+                    playerSelection.toLowerCase()
+
+                    if (playerSelection != "rock" && playerSelection != "paper" && playerSelection != "scissors" && playerSelection != "shotgun") {
+                        computerScore += 1
+                        alert( `You chose "${playerSelection}", which is not part of the game so you looooose. `);
+                    }else if (playerSelection == "rock" && computerSelection == "scissors"){
+                        humanScore += 1 
+                        alert( `You win ! ${playerSelection} beats ${computerSelection}.`);
+                    }else if (playerSelection == "paper" && computerSelection == "rock"){
+                        humanScore += 1
+                        alert( `You win ! ${playerSelection} beats ${computerSelection}. `);
+                    }else if (playerSelection == "scissors" && computerSelection == "paper"){
+                        humanScore += 1
+                        alert( `You win ! ${playerSelection} beats ${computerSelection}. `);     
+                    }else if (playerSelection == computerSelection){
+                        alert( `We have a tie! You both chose ${playerSelection}.`);   
+                    }else {
+                        computerScore += 1
+                        alert(`You lose! Computer chose: ${computerSelection}. \n${computerSelection} beats ${playerSelection}. `);
+                    }
+
+                }
+
+                // Function to play game
+                function playGame(){
+                    playRound(playerSelection, computerSelection)
+                }
+
+                //  const variables for player weapon selection and computer weapon selection. 
+                const playerSelection = prompt("Choose between rock, paper or scissors: ").toLowerCase();
+                const computerSelection = getComputerChoice();
+
+                // console log game progress.
+                console.log(playGame(playRound))
+
+                // Alert for current scores.
+                alert (`Current Scores: 
+                Computer : ${computerScore}. 
+                Player : ${humanScore}.`)
+            }
+
+            // If statement used to compare scores and declare winner at the end of the game.
+            if (computerScore > humanScore){
+                    alert("Computer wins! \nHit refresh to start again.")
+                }else if (humanScore > computerScore){
+                    alert("Player wins! \nHit refresh to start again.")
+                }else if (computerScore == humanScore){
+                    alert("We have a tie ! \nHit refresh to play again.")
+                }
+
+        //prompt to either exit game or notify invalid input. 
+        }else if (gameStart.toLocaleLowerCase() == "no"){
+            alert ("Thank you goodbye.")
+        }else if (gameStart.toLocaleLowerCase() != "yes" || gameStart != "no"){
+            alert("Invalid entry. Hit refresh.")
+        }
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
