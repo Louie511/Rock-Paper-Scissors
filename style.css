@@ -1,0 +1,22 @@
+h1 {
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+.scores {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.weapons {   
+    text-align: center;
+    display: none; 
+
+}
+
+.yesButton {
+    text-align: center;
+}
